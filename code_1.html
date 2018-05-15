@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>
+    <input id="name" type="text">    
+    <button id="submit-btn">Submit</button> 
+    <script>
+    var par=document.querySelector("#name");
+    document.getElementById("submit-btn").onclick=function(){
+        if(par.value!=""){
+            alert(par.value);  //点击按钮
+        }
+    }
+    document.onkeydown=function(ev){
+        if(par.value!=""){
+            if(ev.keyCode==27){  //点击esc
+                par.value="";
+            }
+            if(ev.keyCode==13){  //点击enter
+                alert(par.value);
+            }
+        }
+    }
+    </script>           
+</body>
+</html>

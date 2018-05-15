@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>
+    <div>
+    <h1>setTimeout方法</h1>
+    <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+    <button id="fade-btn">淡出</button>
+   </div>
+   <div>
+        <h1>setInterval方法</h1>
+        <div id="fade-obj-2" style="width:300px;height:300px;background:#000"></div>
+        <button id="fade-btn-2">淡出</button>
+       </div>
+<script>
+    //setTimeout方法
+     var obj=document.getElementById("fade-obj");
+         btn=document.getElementById("fade-btn");
+         tran=10;
+    btn.onclick=function(){
+        if(btn.innerHTML=="淡出"){
+            slowOut();
+        }else if(btn.innerHTML=="淡入"){
+            slowIn();
+        }
+    }
+    function slowOut(){
+        btn.disabled=true;
+        tran--;
+        obj.style.opacity=tran/10;
+        meter1=setTimeout("slowOut()",100);
+        if(tran==0){
+            clearTimeout(meter1);
+            btn.disabled=false;
+            btn.innerHTML="淡入";
+        }
+    }
+    function slowIn(){
+        btn.disabled=true;
+        tran++;
+        obj.style.opacity=tran/10;
+        meter1=setTimeout("slowIn()",100);
+        if(tran==10){
+            clearTimeout(meter1);
+            btn.disabled=false;
+            btn.innerHTML="淡出";
+        }
+    }
+    //setInterval方法
+    var obj_2=document.getElementById("fade-obj-2");
+        btn_2=document.getElementById("fade-btn-2");
+        tran_2=10;
+    btn_2.onclick=function(){
+        if(btn_2.innerHTML=="淡出"){
+            slowOut_2();
+        }else if(btn_2.innerHTML=="淡入"){
+            slowIn_2();
+        }
+    }
+    function slowOut_2(){
+            var timeOut=setInterval(function(){
+            btn_2.disabled=true;
+            tran_2--;
+            obj_2.style.opacity=tran_2/10;
+            if(tran_2==0){
+              clearInterval(timeOut);
+              btn_2.disabled=false;
+              btn_2.innerHTML="淡入";
+             }
+        },100)
+    }
+
+    
+    function slowIn_2(){
+        var timeOut=setInterval(function(){
+            btn_2.disabled=true;
+            tran_2++;
+            obj_2.style.opacity=tran_2/10;
+            if(tran_2==10){
+              clearInterval(timeOut);
+              btn_2.disabled=false;
+              btn_2.innerHTML="淡出";
+             }
+        },100)
+    }
+</script>           
+</body>
+</html>

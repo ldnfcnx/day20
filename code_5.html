@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<style>
+    div{
+        width: 480px;
+        height: 480px;
+        background-image: url("erik_ce204002.jpg");
+        background-repeat: no-repeat;
+        background-position-y:0;
+    }
+</style>
+<body>
+<div></div>
+    <script>
+      window.onload=function(){
+        var div =document.querySelector("div");
+            y=0;
+            frames=17;
+            ary=[];
+            num=0;
+            for(var i=0;i<frames;i++){
+              ary.push(num);
+              num-=480;
+            }
+            for(var j=0;j<frames;j++){
+              num+=480;
+              ary.push(num);
+            }        
+        var timeOut=setInterval(function(){
+          if(y<ary.length){
+                     div.style.backgroundPositionY=ary[y]+"px";
+                     y++;
+                }else {
+                     y=0;
+                }
+          },100)
+        }
+    </script>           
+</body>
+</html>
